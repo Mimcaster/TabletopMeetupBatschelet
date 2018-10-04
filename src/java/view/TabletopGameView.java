@@ -19,16 +19,16 @@ import dbUtils.*;
 
 public class TabletopGameView {
 
-    public static StringDataList allUsersAPI(DbConn dbc) {
+    public static StringDataList allGamesAPI(DbConn dbc) {
 
         //PreparedStatement stmt = null;
         //ResultSet results = null;
         StringDataList sdl = new StringDataList();
         try {
-            String sql = "SELECT web_user_id, user_email, user_password, membership_fee, birthday, "+
-                    "web_user.user_role_id, user_role_type "+
-                    "FROM web_user, user_role where web_user.user_role_id = user_role.user_role_id " + 
-                    "ORDER BY web_user_id ";  // you always want to order by something, not just random order.
+            String sql = "SELECT tabletop_game_id, game_name, game_host, game_time, game_location, max_player, buy_in, "+
+                    "game_location "+
+                    "FROM tabletop_game" + 
+                    "ORDER BY tabletop_game_id ";  // you always want to order by something, not just random order.
             PreparedStatement stmt = dbc.getConn().prepareStatement(sql);
             ResultSet results = stmt.executeQuery();
             while (results.next()) {

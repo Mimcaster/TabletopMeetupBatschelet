@@ -15,7 +15,7 @@ import dbUtils.*;
 
 public class WhoIsPlayingView {
 
-    public static StringDataList allUsersAPI(DbConn dbc) {
+    public static StringDataList allPlayingAPI(DbConn dbc) {
 
         //PreparedStatement stmt = null;
         //ResultSet results = null;
@@ -23,7 +23,9 @@ public class WhoIsPlayingView {
         try {
             String sql = "SELECT who_is_playing_id, join_time, definitely_playing, "+
                     "web_user.web_user_id, tabletop_game.tabletop_game_id, "+
-                    "FROM who_is_playing, web_user, tableto;lp_game WHERE web_user.user_role_id = user_role.user_role_id " + 
+                    "FROM who_is_playing, web_user, tabletop_game" + 
+                    " WHERE web_user.web_user_id = who_is_playing.tabletop_player_id" + 
+                    " AND tabletop_game.tabletop_game_id = who_is_playing.tabletop_game_id" + 
                     "ORDER BY who_is_playing_id ";  // you always want to order by something, not just random order.
             PreparedStatement stmt = dbc.getConn().prepareStatement(sql);
             ResultSet results = stmt.executeQuery();

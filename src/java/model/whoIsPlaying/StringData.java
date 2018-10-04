@@ -20,13 +20,11 @@ import java.sql.ResultSet;
  * free access to put data in or take it out. */
 public class StringData {
 
-    public String webUserId = "";
-    public String userEmail = "";
-    public String userPassword = "";
-    public String birthday = "";
-    public String membershipFee = "";
-    public String userRoleId = "";   // Foreign Key
-    public String userRoleType = ""; // getting it from joined user_role table.
+    public String whoIsPlayingId = "";
+    public String joinTime = "";
+    public String definitelyPlaying = "";
+    public String tabletopPlayerId = "";
+    public String tabletopGameId = "";
 
     public String errorMsg = "";
 
@@ -37,31 +35,28 @@ public class StringData {
     // overloaded constructor sets all data members by extracting from resultSet.
     public StringData(ResultSet results) {
         try {
-            this.webUserId = FormatUtils.formatInteger(results.getObject("web_user_id"));
-            this.userEmail = FormatUtils.formatString(results.getObject("user_email"));
-            this.userPassword = FormatUtils.formatString(results.getObject("user_password"));
-            this.birthday = FormatUtils.formatDate(results.getObject("birthday"));
-            this.membershipFee = FormatUtils.formatDollar(results.getObject("membership_fee"));
-            this.userRoleId = FormatUtils.formatString(results.getObject("web_user.user_role_id"));
-            this.userRoleType = FormatUtils.formatString(results.getObject("user_role_type"));
+            this.whoIsPlayingId = FormatUtils.formatInteger(results.getObject("who_is_playing_id"));
+            this.joinTime = FormatUtils.formatDate(results.getObject("join_time"));
+            this.definitelyPlaying = FormatUtils.formatInteger(results.getObject("definitely_playing"));
+            this.tabletopPlayerId = FormatUtils.formatInteger(results.getObject("tabletop_player_id"));
+            this.tabletopGameId = FormatUtils.formatInteger(results.getObject("tabletop_game_id"));
         } catch (Exception e) {
-            this.errorMsg = "Exception thrown in model.webUser.StringData (the constructor that takes a ResultSet): " + e.getMessage();
+            this.errorMsg = "Exception thrown in model.whoIsPlaying.StringData (the constructor that takes a ResultSet): " + e.getMessage();
         }
     }
 
     public int getCharacterCount() {
-        String s = this.webUserId + this.userEmail + this.userPassword + this.birthday
-                + this.membershipFee + this.userRoleId + this.userRoleType;
+        String s = this.whoIsPlayingId + this.joinTime + this.definitelyPlaying + this.tabletopPlayerId
+                + this.tabletopGameId;
         return s.length();
     }
 
     public String toString() {
-        return "Web User Id:" + this.webUserId
-                + ", User Email: " + this.userEmail
-                + ", User Password: " + this.userPassword
-                + ", Birthday: " + this.birthday
-                + ", Membership Fee: " + this.membershipFee
-                + ", User Role Id: " + this.userRoleId
-                + ", User Role Type: " + this.userRoleType;
+        return "Who Is Playing Id:" + this.whoIsPlayingId
+                + ", Join Time: " + this.joinTime
+                + ", Definitely Playing: " + this.definitelyPlaying
+                + ", Tabletop Player Id: " + this.tabletopPlayerId
+                + ", Tabletop Game Id: " + this.tabletopGameId;
+
     }
 }

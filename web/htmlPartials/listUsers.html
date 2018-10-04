@@ -1,16 +1,126 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <title>TODO supply a title</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
-</html>
+        <p> test </p>
+        <div id="list"></div>
+
+        <script src="../js/ajaxUtilities.js"></script>
+        <script>
+            alert("flag1");
+            // MAIN PROGRAM
+
+            // make ajax call to listUsersAPI, when that data's ready, invoke 
+            // function processResponse passing the httpReq (response) as well 
+            // as the desired target for that response.
+            ajaxCall("../webAPIs/listUsersAPI.jsp", processResponse, processError);
+
+
+            function $(element) {
+                return document.getElementById(element);
+            }
+
+     
+            var target = $("list"); // get a reference to the div that has id = "list"
+
+            function processError(httpRequest) {
+                target.innerHTML = httpRequest.errorMsg;
+            }
+
+            function processResponse(httpRequest) {
+
+                var response = httpRequest.responseText;
+                console.log("processResponse got this response: " + response);
+                var obj = JSON.parse(response);
+                console.log(obj);
+
+                if (obj === null) {
+                    target.innerHTML = ("Error: JSON string evaluated to null.");
+                    return;
+                }
+                if (obj.dbError === null) {
+                    target.innerHTML = ("Error: JSON string did not have a 'dbError' property.");
+                    return;
+                }
+
+                if (obj.dbError.length > 0) {
+                    target.innerHTML = ("Database error: " + obj.dbError);
+                    return;
+                }
+
+                if (obj.webUserList === null) {
+                    target.innerHTML = ("Error: JSON string did not have a 'webUserList' property.");
+                    return;
+                }
+
+                if (obj.webUserList.length === 0) {
+                    target.innerHTML = ("Error: the 'webUserList' array has 0 elements.");
+                    return;
+
+                }
+
+                // Create a new HTML element (a HTML table) and append 
+                // that into the page. 
+                var newTable = document.createElement("table");
+                target.appendChild(newTable);
+
+                var newRow;
+                var newCell;
+
+                // Add one row (to HTML table) per element) in the webUserList array
+                // (a property of the object created from the JSON string).
+                for (i in obj.webUserList) {
+                    newRow = newTable.insertRow(i);
+                    var col = 0;
+                    var data = obj.webUserList[i];
+                    for (prop in data) {
+                        newCell = newRow.insertCell(col);
+                        col++;
+                        newCell.innerHTML = data[prop];
+                        alignCell(newCell); // I/O parameter
+                    }
+                }
+
+                // Add header row at top (with field names as column headings): 
+                newHead = newTable.createTHead();
+                newRow = newHead.insertRow(0);
+
+                var data = obj.webUserList[0];
+                col = 0;
+                for (prop in data) {
+                    newCell = newRow.insertCell(col);
+                    newCell.innerHTML = prettyColumnHeading(prop);
+                    newCell.style.verticalAlign = "bottom";
+                    newCell.style.textAlign = "center";
+                    col++;
+                }
+
+                // function defined within other function (local to the parent function)
+                // Capitalize first letter. Insert space before every 
+                // subsequent capital letter. "userEmail" --> "User Email"
+                function prettyColumnHeading(colHdg) {
+                    if (colHdg.length === 0) {
+                        return "";
+                    }
+                    newHdg = colHdg.charAt(0).toUpperCase();
+                    for (var i = 1; i < colHdg.length; i++) {
+                        if (colHdg.charAt(i) < "a") {
+                            newHdg += " ";
+                        }
+                        newHdg += colHdg.charAt(i);
+                    }
+                    return newHdg;
+                } // end prettyColumnHeading
+
+                // function defined within other function (local to the parent function)
+                function alignCell(cell) { //right justify HTML cell if it contains a number
+
+                    var cellContent = cell.innerHTML;
+
+                    if (!isNaN(cellContent) || // if numeric 
+                            ((cellContent.length > 0) && (cellContent.charAt(0) === "$"))) { // or dollar amt
+                        cell.style.textAlign = "right";
+                        console.log("right alligning " + cellContent);
+                    }
+                } // end alignCell
+
+            } // end of processResponse
+
+
+        </script>

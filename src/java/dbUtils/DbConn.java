@@ -16,14 +16,16 @@ public class DbConn {
         
         String dbAndPass = "FA18_3308_tug83270?user=tug83270&password=phethimi";
         
-        try {
+        try 
+        {
             String DRIVER = "com.mysql.jdbc.Driver";
             
             Class.forName(DRIVER).newInstance();
-            try {
+            try 
+            {
                 // Assume you are running from home using tunneling...
                 //String url = "jdbc:mysql://localhost:3307/"+dbAndPass;
-                String url = "jdbc:mysql://localhost:3307/"+dbAndPass;
+                String url = "jdbc:mysql://localhost:3308/"+dbAndPass;
                 // unless you are working from temple (e.g., lab computer or published)
                 if (this.isTemple()) {
                     url = "jdbc:mysql://cis-linux2.temple.edu:3306/"+dbAndPass;

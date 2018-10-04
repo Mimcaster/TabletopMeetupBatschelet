@@ -15,7 +15,7 @@ import java.sql.ResultSet;
 public class StringDataList {
 
     public String dbError = "";
-    public ArrayList<model.whoIsPlaying.StringData> webUserList = new ArrayList();
+    public ArrayList<model.whoIsPlaying.StringData> whoIsPlayingList = new ArrayList();
 
     // Default constructor leaves StringDataList objects nicely set with properties 
     // indicating no database error and 0 elements in the list.
@@ -24,13 +24,13 @@ public class StringDataList {
 
     // Adds one StringData element to the array list of StringData elements
     public void add(model.whoIsPlaying.StringData stringData) {
-        this.webUserList.add(stringData);
+        this.whoIsPlayingList.add(stringData);
     }
 
     // Adds creates a StringData element from a ResultSet (from SQL select statement), 
     // then adds that new element to the array list of StringData elements.
     public void add(ResultSet results) {
         model.whoIsPlaying.StringData sd = new model.whoIsPlaying.StringData(results);
-        this.webUserList.add(sd);
+        this.whoIsPlayingList.add(sd);
     }
 }

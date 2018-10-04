@@ -20,13 +20,14 @@ import java.sql.ResultSet;
  * free access to put data in or take it out. */
 public class StringData {
 
-    public String webUserId = "";
-    public String userEmail = "";
-    public String userPassword = "";
-    public String birthday = "";
-    public String membershipFee = "";
-    public String userRoleId = "";   // Foreign Key
-    public String userRoleType = ""; // getting it from joined user_role table.
+    public String tabletopGameId = "";
+    public String gameName = "";
+    public String gameHost = "";
+    public String gameTime = "";
+    public String gameLocation = "";
+    public String maxPlayer = "";   // Foreign Key
+    public String buyIn = ""; // getting it from joined user_role table.
+    public String gameDescription = ""; // getting it from joined user_role table.
 
     public String errorMsg = "";
 
@@ -37,32 +38,35 @@ public class StringData {
     // overloaded constructor sets all data members by extracting from resultSet.
     public StringData(ResultSet results) {
         try {
-            this.webUserId = FormatUtils.formatInteger(results.getObject("web_user_id"));
-            this.userEmail = FormatUtils.formatString(results.getObject("user_email"));
-            this.userPassword = FormatUtils.formatString(results.getObject("user_password"));
-            this.birthday = FormatUtils.formatDate(results.getObject("birthday"));
-            this.membershipFee = FormatUtils.formatDollar(results.getObject("membership_fee"));
-            this.userRoleId = FormatUtils.formatString(results.getObject("web_user.user_role_id"));
-            this.userRoleType = FormatUtils.formatString(results.getObject("user_role_type"));
+            this.tabletopGameId = FormatUtils.formatInteger(results.getObject("tabletop_game_id"));
+            this.maxPlayer = FormatUtils.formatInteger(results.getObject("max_player"));
+            this.gameTime = FormatUtils.formatDate(results.getObject("game_time"));
+            this.gameName = FormatUtils.formatString(results.getObject("game_name"));
+            this.gameLocation = FormatUtils.formatString(results.getObject("game_location"));
+            this.gameHost = FormatUtils.formatInteger(results.getObject("game_host"));
+            this.gameDescription = FormatUtils.formatString(results.getObject("user_role_type"));
+            this.buyIn = FormatUtils.formatDollar(results.getObject("buy_in"));
+        
         } catch (Exception e) {
             this.errorMsg = "Exception thrown in model.webUser.StringData (the constructor that takes a ResultSet): " + e.getMessage();
         }
     }
 
     public int getCharacterCount() {
-        String s = this.webUserId + this.userEmail + this.userPassword + this.birthday
-                + this.membershipFee + this.userRoleId + this.userRoleType;
+        String s = this.tabletopGameId + this.maxPlayer + this.gameTime + this.gameName
+                + this.gameLocation + this.gameHost + this.gameDescription + this.buyIn;
         return s.length();
     }
 
     public String toString() {
-        return "Web User Id:" + this.webUserId
-                + ", User Email: " + this.userEmail
-                + ", User Password: " + this.userPassword
-                + ", Birthday: " + this.birthday
-                + ", Membership Fee: " + this.membershipFee
-                + ", User Role Id: " + this.userRoleId
-                + ", User Role Type: " + this.userRoleType;
+        return "Web User Id:" + this.tabletopGameId
+                + ", User Email: " + this.maxPlayer
+                + ", User Password: " + this.gameTime
+                + ", Birthday: " + this.gameName
+                + ", Membership Fee: " + this.gameLocation
+                + ", User Role Id: " + this.gameHost
+                + ", User Role Id: " + this.gameDescription                
+                + ", User Role Type: " + this.buyIn;
     }
 }
 

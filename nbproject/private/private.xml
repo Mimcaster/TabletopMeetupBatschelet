@@ -3,8 +3,22 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/rpbat/OneDrive/Documents/NetBeansProjects/TabletopMeetupBatschelet/src/java/view/TabletopGameView.java</file>
+            <file>file:/C:/Users/rpbat/OneDrive/Documents/NetBeansProjects/TabletopMeetupBatschelet/src/java/model/tabletopGame/StringDataList.java</file>
+            <file>file:/C:/Users/rpbat/OneDrive/Documents/NetBeansProjects/TabletopMeetupBatschelet/src/java/model/whoIsPlaying/StringData.java</file>
+            <file>file:/C:/Users/rpbat/OneDrive/Documents/NetBeansProjects/TabletopMeetupBatschelet/src/java/dbUtils/FormatUtils.java</file>
+            <file>file:/C:/Users/rpbat/OneDrive/Documents/NetBeansProjects/TabletopMeetupBatschelet/src/java/view/WebUserView.java</file>
+            <file>file:/C:/Users/rpbat/OneDrive/Documents/NetBeansProjects/TabletopMeetupBatschelet/src/java/model/whoIsPlaying/StringDataList.java</file>
             <file>file:/C:/Users/rpbat/OneDrive/Documents/NetBeansProjects/TabletopMeetupBatschelet/web/index.html</file>
+            <file>file:/C:/Users/rpbat/OneDrive/Documents/NetBeansProjects/TabletopMeetupBatschelet/src/java/model/webUser/StringDataList.java</file>
+            <file>file:/C:/Users/rpbat/OneDrive/Documents/NetBeansProjects/TabletopMeetupBatschelet/web/webAPIs/listUsersAPI.jsp</file>
+            <file>file:/C:/Users/rpbat/OneDrive/Documents/NetBeansProjects/TabletopMeetupBatschelet/src/java/view/WhoIsPlayingView.java</file>
+            <file>file:/C:/Users/rpbat/OneDrive/Documents/NetBeansProjects/TabletopMeetupBatschelet/src/java/dbUtils/DbConn.java</file>
+            <file>file:/C:/Users/rpbat/OneDrive/Documents/NetBeansProjects/TabletopMeetupBatschelet/web/webAPIs/listWhoIsPlayingAPI.jsp</file>
             <file>file:/C:/Users/rpbat/OneDrive/Documents/NetBeansProjects/TabletopMeetupBatschelet/web/style/myStyle.css</file>
+            <file>file:/C:/Users/rpbat/OneDrive/Documents/NetBeansProjects/TabletopMeetupBatschelet/src/java/model/tabletopGame/StringData.java</file>
+            <file>file:/C:/Users/rpbat/OneDrive/Documents/NetBeansProjects/TabletopMeetupBatschelet/web/webAPIs/listGamesAPI.jsp</file>
+            <file>file:/C:/Users/rpbat/OneDrive/Documents/NetBeansProjects/TabletopMeetupBatschelet/src/java/model/webUser/StringData.java</file>
         </group>
     </open-files>
 </project-private>

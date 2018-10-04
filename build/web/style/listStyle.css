@@ -1,10 +1,19 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
-/* 
-    Created on : Sep 26, 2018, 5:28:49 PM
-    Author     : rpbat
-*/
+/* Style the HTML table that shows the tabular database data */
 
+#dataList table {
+    margin:auto;     /* margin:auto makes left and right margins the same, centers the table */
+    margin-top: -1em;
+}
+
+#dataList td {
+    padding: 4px;
+    background-color: #DDEEEE;
+    font-size:13px;
+}
+
+#dataList thead td {  /* style of td elements that are inside of a thead element (column headings)) */
+    background-color: #AABBCC;
+    font-weight: bold;
+    font-size:16px;
+    padding-top:10px;
+}
