@@ -1,7 +1,7 @@
         <p> test </p>
         <div id="list"></div>
 
-        <script src="../js/ajaxUtilities.js"></script>
+        <script src="js/ajaxUtilities.js"></script>
         <script>
             alert("flag1");
             // MAIN PROGRAM
@@ -9,7 +9,7 @@
             // make ajax call to listUsersAPI, when that data's ready, invoke 
             // function processResponse passing the httpReq (response) as well 
             // as the desired target for that response.
-            ajaxCall("../webAPIs/listUsersAPI.jsp", processResponse, processError);
+            ajaxCall("webAPIs/listUsersAPI.jsp", processResponse, processError);
 
 
             function $(element) {
